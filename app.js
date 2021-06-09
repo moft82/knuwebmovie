@@ -18,7 +18,7 @@ const commentController = require('./controllers/comment')
 // // MIDDLEWARE
 const commentDuplicateMiddleWare = require('./middlewares/commentDuplicateMiddleware')
 const authMiddleWare = require('./middlewares/authMiddleware')
-const redirectAuthMiddleWare = require('./middlewares/redirectAuthMiddleWare')
+const redirectAuthMiddleWare = require('./middlewares/redirectAuthMiddleware')
 
 // MONGO DB
 mongoose.connect('mongodb+srv://moft:Adminmoft@cluster0.5h1nt.mongodb.net/web', {
@@ -35,7 +35,7 @@ db.once('open', () => {
 const app = new express()
 app.use(fileUpload())
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
+app.use(express.static('./public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
