@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE9">
+    <meta charset="utf-8">
+
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome5.8.2.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <title>web programming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/knu.png">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class="container-sm log_join_box">
+        <div class="title_name">
+            <h4>로그인</h4>
+            <div class="title_solidline"></div>
+        </div>
+        <form method="POST" enctype="multipart/form-data" action="/auth/login">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="inputid">아이디</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputID" name="user_id" minlength="6" maxlength="20" placeholder="아이디" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationServer01">비밀번호</label>
+                    <input type="password" class="form-control" id="inputpw" name="password" minlength="8" maxlength="12" placeholder="비밀번호" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <input type="submit" class="btn btn-dark" id ="submit_login" style="width:auto; " value="로그인">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

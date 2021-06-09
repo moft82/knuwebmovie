@@ -1,0 +1,536 @@
+﻿/*
+  Theme Name: 북구청 민원데이터 자동분류 시스템
+  Author: WJ_KANG
+  USE: DIP
+*/
+
+/* Table of content */
+/*===================================
+1. Body, General 
+2. 로딩창
+3. 스크롤 테이블
+==================================== */
+/* ===================================
+1. General
+==================================== */
+body {
+    overflow-x: hidden;
+    font-family: Verdana,'ng','ngb', serif;
+    background-color: #333;
+}
+@font-face {
+    font-family: 'ngb';
+    src: url('../webfonts/NanumGothicBold.ttf');
+}
+
+@font-face {
+    font-family: 'ng';
+    src: url('../webfonts/NanumGothic.ttf');
+}
+
+
+/*===================================
+2. 로딩창
+==================================== */
+/* Center the loader */
+#loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+/*===================================
+3. 스크롤 테이블
+==================================== */
+
+.scrolltable {
+    display: block;
+    max-height: 80vh;
+    overflow: auto;
+    margin-top:2em;
+    margin-bottom:2em;
+}
+
+/* 스크롤 디자인 width */
+.scrolltable::-webkit-scrollbar {
+    width: 0.6em;
+    height:0.6em;
+}
+
+/* Track */
+    .scrolltable::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 0.08em grey;
+        border-radius: 1em;
+    }
+
+/* Handle */
+    .scrolltable::-webkit-scrollbar-thumb {
+        background: #b3b3b3;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+        .scrolltable::-webkit-scrollbar-thumb:hover {
+            background: #a3a3a3;
+        }
+
+/*===================================
+3. 입력 폼 BOX
+==================================== */
+
+
+.form_container {
+    background-color: white;
+    padding: 3em;
+    box-shadow: 0.5em 1em 1em #222;
+    margin: 0;
+    max-width: 90vw;
+    min-width: 40vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+@media (max-width: 1300px) {
+    .form_container {
+        min-width: 43vw;
+    }
+}
+@media (max-width: 1250px) {
+    .form_container {
+        min-width: 45vw;
+    }
+}
+@media (max-width: 1200px) {
+    .form_container {
+        min-width: 47vw;
+    }
+}
+@media (max-width: 1150px) {
+    .form_container {
+        min-width: 50vw;
+    }
+}
+@media (max-width: 1100px) {
+    .form_container {
+        min-width: 53vw;
+    }
+}
+@media (max-width: 1000px) {
+    .form_container {
+        min-width: 55vw;
+    }
+}
+@media (max-width: 950px) {
+    .form_container {
+        min-width: 60vw;
+    }
+}
+@media (max-width: 900px) {
+    .form_container {
+        min-width: 63vw;
+    }
+}
+@media (max-width: 750px) {
+    .form_container {
+        min-width: 65vw;
+    }
+}
+@media (max-width: 700px) {
+    .form_container {
+        min-width: 70vw;
+    }
+}
+@media (max-width: 650px) {
+    .form_container {
+        min-width: 75vw;
+    }
+}
+@media (max-width: 600px) {
+    .form_container {
+        min-width: 80vw;
+    }
+}
+@media (max-width: 550px) {
+    .form_container {
+        min-width: 85vw;
+    }
+}
+@media (max-width: 500px) {
+    .form_container {
+        min-width: 90vw;
+    }
+}
+
+
+/*===================================
+4. 아이콘 바
+==================================== */
+
+.icon-bar {
+    background-color: #555;
+    position: fixed;
+    z-index: 4;
+}
+
+    .icon-bar a {
+        display: block;
+        text-align: center;
+        padding: 1em;
+        transition: all 0.3s ease;
+        color: white;
+        text-decoration: none;
+        cursor:pointer;
+    }
+
+    .icon-bar span {
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+
+    .icon-bar i {
+        font-size: 30px;
+    }
+
+    .icon-bar a:hover {
+        background-color: #000;
+        color: white;
+    }
+
+    .icon-bar .active {
+        background-color: #4CAF50;
+    }
+    
+@media (max-width: 1300px) {
+    .icon-bar {
+        opacity: 0.9;
+    }
+
+        .icon-bar:hover {
+            opacity: 1;
+        }
+}
+
+
+@media (max-width: 950px) {
+    .icon-bar {
+        opacity:0.8;
+    }
+    .icon-bar:hover {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 450px) {
+    .icon-bar {
+        opacity: 0.6;
+    }
+
+        .icon-bar:hover {
+            opacity: 1;
+        }
+}
+
+/*===================================
+5. 지하철 아이콘 바
+==================================== */
+
+.sub_icon-bar {
+    background-color: #555;
+    position: fixed;
+    z-index: 999;
+    top:20em;
+}
+
+    .sub_icon-bar a {
+        display: block;
+        text-align: center;
+        padding: 1em;
+        transition: all 0.3s ease;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .sub_icon-bar span {
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+
+    .sub_icon-bar i {
+        font-size: 30px;
+        margin-bottom:0.3em;
+    }
+
+    .sub_icon-bar a:hover {
+        background-color: #000;
+        color: white;
+    }
+
+    .sub_icon-bar #line1_index:hover {
+        background-color: #d93f5c;
+        color: white;
+    }
+    .sub_icon-bar #line2_index:hover {
+        background-color: #00aa80;
+        color: white;
+    }
+    .sub_icon-bar #line3_index:hover {
+        background-color: #ffb100;
+        color: white;
+    }
+    .sub_icon-bar #line4_index:hover {
+        background-color: #86E57F;
+        color: white;
+    }
+
+    .sub_icon-bar .active {
+        background-color: #4CAF50;
+    }
+
+@media (max-width: 1300px) {
+    .sub_icon-bar {
+        opacity: 0.9;
+    }
+
+        .sub_icon-bar:hover {
+            opacity: 1;
+        }
+}
+
+
+@media (max-width: 950px) {
+    .icon-bar {
+        opacity: 0.8;
+    }
+
+        .icon-bar:hover {
+            opacity: 1;
+        }
+}
+
+@media (max-width: 450px) {
+    .icon-bar {
+        opacity: 0.6;
+    }
+
+        .icon-bar:hover {
+            opacity: 1;
+        }
+}
+
+
+/*===================================
+6. 영화
+==================================== */
+.movie_poster {
+    box-shadow: 1px 2px 2px 3px #444;
+    width: 100%;
+    transition: ease-in-out .5s;
+}
+
+    .movie_poster:hover {
+        transform: scale(1.01);
+        box-shadow: 2px 4px 4px 6px #444;
+    }
+
+.rated {
+    color: #ffd800;
+}
+
+.movie_exlegend {
+    font-size: 1.05em;
+}
+
+.movie_excontent {
+    font-size: 0.9em;
+}
+
+    .movie_excontent::before {
+        content: "·";
+    }
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 1.5em;
+    padding: 0 .2em;
+    float: left;
+    border-radius: 0 0.2em 0.2em 0;
+    left: 0;
+}
+    /*STAR RATING*/
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    .star-rating :checked ~ label {
+        color: orange;
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+        color: orange;
+    }
+
+.per-rating {
+    font-size: 0.8em;
+    text-align: Center;
+}
+
+@media only screen and (max-width: 40em) {
+    .per-rating {
+        font-size: 0.5em;
+    }
+}
+
+
+
+.log_join_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 95%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    margin-bottom: 2em;
+    padding: 2em;
+    box-shadow: 2px 4px 4px 6px #000;
+    border-radius: .5em .5em .5em .5em;
+}
+
+@media (max-width: 950px) {
+    .log_join_box {
+        width: 70%;
+    }
+}
+
+@media (max-width: 450px) {
+    .log_join_box {
+        min-width: 95%;
+    }
+}
+
+.poster_container {
+    position: relative;
+    padding: 0em 0em 0em 0em;
+    box-shadow: #222 1px 2px 2px 3px;
+    margin: .5em;
+    transition: ease-in-out .5s;
+    cursor: pointer;
+    border-radius: .5em;
+}
+
+    .poster_container:hover {
+        transform: scale(1.02);
+    }
+
+.poster_image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.poster_glass {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: .5em;
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+}
+
+.poster_ttext {
+    color: white;
+    font-size: 1.1em;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    font-weight: bold;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    width: 100%;
+}
+
+.poster_btext {
+    color: white;
+    font-size: .9em;
+    position: absolute;
+    bottom: 05%;
+    left: 50%;
+    font-weight: bold;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    width: 100%;
+}

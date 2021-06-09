@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE9">
+    <meta charset="utf-8">
+
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome5.8.2.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <title>web programming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/knu.png">
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        .movie_poster {
+            box-shadow: 1px 2px 2px 3px #444;
+            width: 100%;
+            transition: ease-in-out .5s;
+        }
+
+        .movie_poster:hover {
+            transform: scale(1.01);
+            box-shadow: 2px 4px 4px 6px #444;
+        }
+
+        .rated {
+            color: #ffd800;
+
+        }
+
+        .movie_exlegend {
+            font-size: 1.05em;
+        }
+
+        .movie_excontent {
+            font-size: 0.9em;
+        }
+
+        .movie_excontent::before {
+            content: "·";
+        }
+    </style>
+
+    <div class="container"
+        style="margin-top:2em; background-color:#fff;  margin-bottom:2em; padding:2em; box-shadow: 2px 4px 4px 6px #000; border-radius:.5em .5em .5em .5em;">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <img class="movie_poster" src="/img/<%= movie.img %>">
+            </div>
+            <div class="col-md-9 col-sm-6 col-12">
+                <p><b class="movie_exlegend">영화명</b> <span class="movie_excontent"><%= movie.title %></span></p>
+                <p><b class="movie_exlegend">상영시간</b> <span class="movie_excontent"><%= movie.showTm %></span></p>
+                <p><b class="movie_exlegend">국가</b> <span class="movie_excontent"><%= movie.nation %></span></p>
+                <p><b class="movie_exlegend">상영관람가</b> <span class="movie_excontent"><%= movie.watchGradeNm %></span>
+                </p>
+                <p><b class="movie_exlegend">개봉일</b> <span
+                        class="movie_excontent"><%= movie.openDt.toDateString() %></span></p>
+                <p><b class="movie_exlegend">장르</b> <span class="movie_excontent"><%= movie.genre %></span></p>
+                <p><b class="movie_exlegend">감독</b> <span class="movie_excontent"><%= movie.director %></span></p>
+                <p><b class="movie_exlegend">배우</b> <span class="movie_excontent"><%= movie.actors %></span></p>
+            </div>
+            <div class="col-12" style="margin-top: 1vh;">
+                <p>
+                    <b class="movie_exlegend">시놉시스</b>
+                    <br>
+                    <span class="movie_excontent">기다려... 우리가 꼭 데리러 갈게...
+                        "'베이스 캠프,베이스 캠프. 여기는 정상 공격조.더 이상 올라갈 곳이 없는데 어떡하지?"'
+                        해발 8,750 미터 히말라야 에베레스트 데스존
+                        인간의 접근을 허락하지 않은 신의 영역
+                        그곳에 우리 동료가 묻혀있다.
+                        산 아래 하나였고, 또 다른 가족이었던 사람들
+                        생을 마감한 후배 대원의 시신을 찾기 위해
+                        기록도, 명예도, 보상도 없는 가슴 뜨거운 여정을 시작한다.
+                        그 누구도 시도하지 않았던 위대한 도전
+                        엄홍길 대장과 휴먼원정대의 감동 실화가 공개된다.
+                    </span>
+                </p>
+            </div>
+
+
+        </div>
+
+        <hr style="box-shadow: .1px .2px .2px .3px #ccc;" />
+        <div class="row" style="margin-top:1em;">
+            <div class="col-12">
+                <div class="accordion" id="accordionComment">
+                    <div style="border: 1px solid #ccc; border-radius: .5em; padding:.5em;">
+                        <div id="headingOne">
+
+                            <button class="btn btn-block text-left d-flex justify-content-between align-items-center"
+                                type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                <b style="font-size:0.9em">이용자 평점 (<%= summary.count %>건)</b>
+                                <span class="badge badge-light badge-pill"><i class="fas fa-sort-down"></i></span>
+                            </button>
+
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionComment">
+
+                            <div class="list-group" style="margin-top:.5em;">
+                                <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                                    data-target="#MovieModal"><b><i class="fas fa-edit"></i> 리뷰 작성</b></button>
+                                <% for (var i = 0; i < comments.length; i++) { %>
+                                <!-- 댓글 FOR 문 -->
+                                <div class="list-group-item list-group-item-action">
+                                    <b style="font-size:.85em;" class="mb-1"><%= comments[i].user_id %></b><br>
+                                    <small class="text-muted">
+                                        <!-- RATED FOR 문 -->
+                                        <% for (var j=0; j <  parseInt(comments[i].score) ; j++){ %>
+                                        <span class="fa fa-star rated"></span>
+                                        <% } %>
+                                        <% for (var j=0; j <  5-parseInt(comments[i].score) ; j++){ %>
+                                        <span class="fa fa-star"></span>
+                                        <% } %>
+                                    </small>
+                                    <p class="mb-1" style="font-size:.8em;"><%= comments[i].comment %></p>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 댓글 Modal -->
+        <div class="modal fade" id="MovieModal" tabindex="-1" aria-labelledby="MovieModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="MovieModalLabel">리뷰작성하기</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/comment" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="hidden" name="code" value="<%= movie.code %>" />
+                                <div class="star-rating">
+                                    <input type="radio" id="5-stars" name="score" value="5" checked />
+                                    <label for="5-stars" class="star">&#9733;</label>
+                                    <input type="radio" id="4-stars" name="score" value="4" />
+                                    <label for="4-stars" class="star">&#9733;</label>
+                                    <input type="radio" id="3-stars" name="score" value="3" />
+                                    <label for="3-stars" class="star">&#9733;</label>
+                                    <input type="radio" id="2-stars" name="score" value="2" />
+                                    <label for="2-stars" class="star">&#9733;</label>
+                                    <input type="radio" id="1-star" name="score" value="1" />
+                                    <label for="1-star" class="star">&#9733;</label>
+                                </div>
+
+                                <textarea class="form-control" name="comment" rows="3" maxlength="140"
+                                    placeholder="140자 이내의 감상평을 남겨주세요"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">닫기</button>
+                            <button type="submit" class="btn btn-sm btn-primary">작성하기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+</html>
