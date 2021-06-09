@@ -16,88 +16,7 @@
 </head>
 
 <body style="background:#fff;">
-    <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">The Movie</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/"><b>홈으로</b></a>
-                </li>
-                <% if (!loggedIn) { %>
-                <!-- 로그인 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" role="button" data-toggle="modal" data-target="#LoginModal">
-                        <b>로그인</b>
-                    </a>
-                    <!-- 로그인 Modal -->
-                    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="POST" action="/auth/login">
-                                        <div class="form-group">
-                                            <label>아이디</label>
-                                            <input type="text" class="form-control" name="user_id" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>비밀번호</label>
-                                            <input type="password" class="form-control" name="password" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-success btn-sm">로그인</button>
-                                    </form>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/user/register">회원가입</a>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                        data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <% } %>
-                <% if (loggedIn) { %>
-                <!-- 로그아웃 -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" role="button" data-toggle="modal" data-target="#LogoutModal">
-                        <b>로그아웃</b>
-                    </a>
-                    <!-- 로그아웃 Modal -->
-                    <div class="modal fade" id="LogoutModal" tabindex="-1" aria-labelledby="LogoutModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <b>로그아웃 하시겠습니까?</b>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                        onclick="location.href='/logout'">예</button>
-                                    <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">아니요</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <% } %>
-            </ul>
-
-        </div>
-    </nav>
-    <!-- NAV -->
+    <%- include('layouts/nav'); -%>
 
     <div class="jumbotron jumbotron-fluid"
         style=" margin-bottom: 0; color: white; background-image: linear-gradient(rgba(52, 58, 64, 0.8), rgba(52, 58, 64, 0.9)), url('/img/film.jpg'); background-size:cover;">
@@ -110,28 +29,23 @@
         <hr>
         <div class="row">
             <% for (var i = 0; i < movies.length; i++) {%>
-            <!-- MOVIE FOR 문 -->
-            <div class="col-md-3 col-sm-6 col-12">
-                <!-- View Page LINK -->
-                <div class="poster_container" onclick="location.href='/view/<%= movies[i].code %>'">
-                    <img src="/img/<%= movies[i].img %>" class="poster_image">
-                    <div class="poster_glass">
-                        <div class="poster_ttext"><%= movies[i].title %></div>
-                        <div class="poster_btext"><%= movies[i].openDt.toDateString() %><br><%= movies[i].genre %></div>
-                    </div>
-                </div>
+    <!-- MOVIE FOR 문 -->
+    <div class="col-md-3 col-sm-6 col-12">
+        <!-- View Page LINK -->
+        <div class="poster_container" onclick="location.href='/view/<%= movies[i].code %>'">
+            <img src="/img/<%= movies[i].img %>" class="poster_image">
+            <div class="poster_glass">
+                <div class="poster_ttext"><%= movies[i].title %></div>
+                <div class="poster_btext"><%= movies[i].openDt.toDateString() %><br><%= movies[i].genre %></div>
             </div>
-            <% } %>
         </div>
+    </div>
+    <% } %>
+    </div>
 
     </div>
     <!-- FOOTER -->
-    <div class="jumbotron jumbotron-fluid" style="margin:0em; background: rgb(52, 58, 64)">
-        <div class="container">
-            <h1 class="display-4" style="text-align:center; font-size:1em; color:white;">© THE MOVIE. All right reserved
-                Designed by THE MOVIE</h1>
-        </div>
-    </div>
+    <%- include('layouts/footer'); -%>
     <!-- FOOTER -->
 </body>
 

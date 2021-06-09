@@ -15,6 +15,7 @@
 
 </head>
 <body>
+    <%- include('layouts/nav'); -%>
     <div class="container-sm log_join_box">
         <div class="title_name">
             <h4>로그인</h4>
@@ -38,11 +39,10 @@
 
             <div class="form-row">
                 <input type="submit" class="btn btn-dark" id ="submit_login" style="width:auto; " value="로그인">
-            </div>
-            <div class="form-row">
-                <a href="/user/register"><button  class="btn btn-dark" id ="submit_login" style="width:auto; " value="로그인"></a>
+                <a href="/user/register" style="text-decoration: none; color:white;"><button  class="btn btn-dark" id ="submit_login" style="width:auto; margin-left: 2vw;">회원가입</a>
             </div>
         </form>
     </div>
+    <%- include('layouts/footer'); -%>
 </body>
 </html>
