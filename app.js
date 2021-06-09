@@ -16,9 +16,9 @@ const registerUserController = require('./controllers/registerUser')
 const viewController = require('./controllers/view')
 const commentController = require('./controllers/comment')
 // // MIDDLEWARE
-const commentDuplicateMiddleWare = require('./middleware/commentDuplicateMiddleware')
-const authMiddleWare = require('./middleware/authMiddleware')
-const redirectAuthMiddleWare = require('./middleware/redirectAuthMiddleWare')
+const commentDuplicateMiddleWare = require('./middlewares/commentDuplicateMiddleware')
+const authMiddleWare = require('./middlewares/authMiddleware')
+const redirectAuthMiddleWare = require('./middlewares/redirectAuthMiddleWare')
 
 // MONGO DB
 mongoose.connect('mongodb+srv://moft:Adminmoft@cluster0.5h1nt.mongodb.net/web', {
